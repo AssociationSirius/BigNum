@@ -49,6 +49,10 @@ public:
 	BigNum(         short x);
 	BigNum(std::string    s);
 
+	// Copy constructor
+	BigNum(const BigNum &n);
+	BigNum(const BigNum* n);
+
 	friend std::ostream & operator << (std::ostream& sortie , const BigNum & n);
 	void print();
 private:
@@ -74,6 +78,30 @@ BigNum::BigNum(unsigned short x) { sign=Sign::PLUS; initFromSignedPrimitive(x); 
 BigNum::BigNum(         long  x) { initFromUnSignedPrimitive(x); }
 BigNum::BigNum(         int   x) { initFromUnSignedPrimitive(x); }
 BigNum::BigNum(         short x) { initFromUnSignedPrimitive(x); }
+
+// Copy constructor
+BigNum::BigNum(const BigNum &n) {
+		//cas n=n;
+		if (this == &n)
+		return;
+	this->initialize();
+	this->sign=n.sign;
+	this->lastDigit= n.lastDigit;
+	for(unsigned int i=0; i<=n.lastDigit; i++)
+		this->digits[i]=n.digits[i];
+}
+
+// Copy constructor
+BigNum::BigNum(const BigNum* n) {
+		//cas n=n;
+		if (this == n)
+		return;
+	this->initialize();
+	this->sign=n->sign;
+	this->lastDigit= n->lastDigit;
+	for(unsigned int i=0; i<=n->lastDigit; i++)
+		this->digits[i]=n->digits[i];
+}
 
 BigNum::BigNum(std::string    s)
 {
