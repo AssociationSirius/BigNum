@@ -66,6 +66,7 @@ public:
 
 	friend std::ostream & operator << (std::ostream& sortie , const BigNum & n);
 	void print();
+
 private:
 	void initialize();
 	void normalize();
@@ -316,7 +317,25 @@ int main(int argc, char **argv)
 		test10.print();
 		test11.print();
 	}
+
+	// compare tests
+	if (1) {
+		BigNum test1(542);
+		BigNum test2(92);
+		BigNum test3(-540);
+
+		if (test1 < test2)
+			cout << test1 << " < " << test2 << endl;
+		else
+			cout << test1 << " > " << test2 << endl;
 	
+		if (test2 < test3)
+		cout << test2 << " < " << test3 << endl;
+		else
+			cout << test2 << " > " << test3 << endl;
+	}
+
+	//normalize tests
 	BigNum test= BigNum("-000123456789");
 	test.print();
 
