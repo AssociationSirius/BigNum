@@ -103,6 +103,10 @@ BigNum::BigNum(std::string    s)
 }
 
 
+
+
+// templates
+
 template <class X> void BigNum::initFromSignedPrimitive (X x)
 {
 	//only digits
@@ -157,6 +161,8 @@ std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 	sortie << oss.str();
 	return sortie;
 }
+
+// fonctions
 
 
 int main(int argc, char **argv)
