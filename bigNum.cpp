@@ -97,7 +97,7 @@ template <class X> void BigNum::initFromUnSignedPrimitive (X x)
 }
 
 
-// printf
+// printf -- obsolete --
 void BigNum::print()
 {
 	if (this->sign==-1)
