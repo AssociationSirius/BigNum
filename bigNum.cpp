@@ -46,6 +46,7 @@ public:
 	friend std::ostream & operator << (std::ostream& sortie , const BigNum & n);
 	void print();
 private:
+	void initialize();
 	template <class X> void initFromSignedPrimitive (X x);
 	template <class X> void initFromUnSignedPrimitive (X x);
 	char digits[MAX_DIGITS]={0};
@@ -59,6 +60,14 @@ BigNum::BigNum()
 {
 	sign=0;
 	lastDigit=0;
+}
+
+void BigNum::initialize()
+{
+	sign=0;
+	lastDigit=0;
+	for(int i=0; i<MAX_DIGITS; i++)
+		digits[i]=0;
 }
 
 BigNum::BigNum(unsigned long  x) { sign=1; initFromSignedPrimitive(x); }
