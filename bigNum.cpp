@@ -53,6 +53,9 @@ public:
 	BigNum(const BigNum &n);
 	BigNum(const BigNum* n);
 
+	// Assignment operator
+	void operator=(const BigNum &x);
+
 	friend std::ostream & operator << (std::ostream& sortie , const BigNum & n);
 	void print();
 private:
@@ -102,6 +105,17 @@ BigNum::BigNum(const BigNum* n) {
 	for(unsigned int i=0; i<=n->lastDigit; i++)
 		this->digits[i]=n->digits[i];
 }
+
+
+// Assignment operator
+inline void BigNum::operator=(const BigNum &n) {
+	this->initialize();
+	this->sign=n.sign;
+	this->lastDigit= n.lastDigit;
+	for(unsigned int i=0; i<=n.lastDigit; i++)
+		this->digits[i]=n.digits[i];
+}
+
 
 BigNum::BigNum(std::string    s)
 {
