@@ -29,6 +29,7 @@
 
 #define MAX_DIGITS 1000
 
+enum class Sign : char { NUL = 0, PLUS = 1, MINUS = -1 };
 
 class BigNum
 {
@@ -50,7 +51,7 @@ private:
 	template <class X> void initFromSignedPrimitive (X x);
 	template <class X> void initFromUnSignedPrimitive (X x);
 	char digits[MAX_DIGITS]={0};
-	char sign;
+	Sign sign;
 	unsigned int lastDigit;
 };
 
@@ -58,21 +59,21 @@ private:
 
 BigNum::BigNum()
 {
-	sign=0;
+	sign=Sign::NUL;
 	lastDigit=0;
 }
 
 void BigNum::initialize()
 {
-	sign=0;
+	sign=Sign::NUL;
 	lastDigit=0;
 	for(int i=0; i<MAX_DIGITS; i++)
 		digits[i]=0;
 }
 
-BigNum::BigNum(unsigned long  x) { sign=1; initFromSignedPrimitive(x); }
-BigNum::BigNum(unsigned int   x) { sign=1; initFromSignedPrimitive(x); }
-BigNum::BigNum(unsigned short x) { sign=1; initFromSignedPrimitive(x); }
+BigNum::BigNum(unsigned long  x) { sign=Sign::PLUS; initFromSignedPrimitive(x); }
+BigNum::BigNum(unsigned int   x) { sign=Sign::PLUS; initFromSignedPrimitive(x); }
+BigNum::BigNum(unsigned short x) { sign=Sign::PLUS; initFromSignedPrimitive(x); }
 BigNum::BigNum(         long  x) { initFromUnSignedPrimitive(x); }
 BigNum::BigNum(         int   x) { initFromUnSignedPrimitive(x); }
 BigNum::BigNum(         short x) { initFromUnSignedPrimitive(x); }
@@ -82,11 +83,11 @@ BigNum::BigNum(std::string    s)
 	std::string x = s;
 	//cas du moins
 	if (x[0]=='-') {
-		sign = -1;
+		sign = Sign::MINUS;
 		x=x.substr(1, x.length()-1);
 	}
 	else
-		sign = 1;
+		sign = Sign::PLUS;
 
 	char c;
 	lastDigit= x.length()-1;
@@ -119,12 +120,12 @@ template <class X> void BigNum::initFromUnSignedPrimitive (X x)
 {
 	//signe
 	if (x>0) {
-		sign=1;
+		sign=Sign::PLUS;
 		initFromSignedPrimitive(x);
 	}
 	else
 	if (x<0) {
-		sign=-1;
+		sign=Sign::MINUS;
 		initFromSignedPrimitive(-x);
 	}
 }
@@ -133,7 +134,7 @@ template <class X> void BigNum::initFromUnSignedPrimitive (X x)
 // printf -- obsolete --
 void BigNum::print()
 {
-	if (this->sign==-1)
+	if (this->sign==Sign::MINUS)
 		printf("-");
 	for(int tmp=lastDigit; tmp>=0; tmp--) {
 		printf("%i", digits[tmp]);
@@ -146,7 +147,7 @@ std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 {
 	std::stringstream oss;
 	// affichage signe et des digits
-	if (n.sign==-1)
+	if (n.sign==Sign::MINUS)
 		oss << "-";
 	char a;
 	for(int tmp=n.lastDigit; tmp>=0; tmp--) {
