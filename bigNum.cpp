@@ -250,9 +250,19 @@ int main(int argc, char **argv)
 
 	//~ std::cout << "test7 " << test7 << std::endl;
 
-	BigNum test9("-123456789");
-	test9.print();
+	BigNum* test9= new BigNum("-123456789");
+	test9->print();
 	//~ std::cout << std::endl << "test string :  " << test9 << std::endl;
+
+	BigNum test10(test9);
+	BigNum test11;
+	test11 = test9;
+
+	delete test9;
+	test10.print();
+	test11.print();
+
+
 	return 0;
 }
 
