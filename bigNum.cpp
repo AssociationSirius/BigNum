@@ -72,8 +72,8 @@ private:
 	template <class X> void initFromSignedPrimitive (X x);
 	template <class X> void initFromUnSignedPrimitive (X x);
 	char digits[MAX_DIGITS]={0};
-	Sign sign;
-	unsigned int lastDigit;
+	Sign sign=Sign::NUL;
+	unsigned int lastDigit=0;
 	CompRes compareTo(const BigNum &n) const;
 };
 
@@ -82,8 +82,6 @@ private:
 ////////////////////////////////////////////////////////////////////////////////
 BigNum::BigNum()
 {
-	sign=Sign::NUL;
-	lastDigit=0;
 }
 
 BigNum::BigNum(unsigned long  x) { sign=Sign::PLUS; initFromSignedPrimitive(x); }
