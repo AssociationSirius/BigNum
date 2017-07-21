@@ -109,7 +109,7 @@ BigNum::BigNum(std::string    s)
 		if ((c>=0) && (c<=9))
 			digits[lastDigit-i] = c;
 		else {
-			printf("error charactere\n");
+			printf("char error not a digit\n");
 			digits[lastDigit-i]=0; //TODO déclanchement d'erreur
 		}
 	}
