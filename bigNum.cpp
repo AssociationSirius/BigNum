@@ -141,17 +141,6 @@ BigNum::BigNum(const BigNum* n) {
 		this->digits[i]=n->digits[i];
 }
 
-
-// Assignment operator
-inline void BigNum::operator=(const BigNum &n) {
-	this->initialize();
-	this->sign=n.sign;
-	this->lastDigit= n.lastDigit;
-	for(unsigned int i=0; i<=n.lastDigit; i++)
-		this->digits[i]=n.digits[i];
-}
-
-
 ////////////////////////////////////////////////////////////////////////////////
 // templates
 ////////////////////////////////////////////////////////////////////////////////
@@ -185,6 +174,13 @@ template <class X> void BigNum::initFromUnSigned(X x)
 ////////////////////////////////////////////////////////////////////////////////
 // operator
 ////////////////////////////////////////////////////////////////////////////////
+inline void BigNum::operator=(const BigNum &n) {
+	this->initialize();
+	this->sign=n.sign;
+	this->lastDigit= n.lastDigit;
+	for(unsigned int i=0; i<=n.lastDigit; i++)
+		this->digits[i]=n.digits[i];
+}
 
 std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 {
