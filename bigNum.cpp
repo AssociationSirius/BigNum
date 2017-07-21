@@ -63,14 +63,6 @@ BigNum::BigNum()
 	lastDigit=0;
 }
 
-void BigNum::initialize()
-{
-	sign=Sign::NUL;
-	lastDigit=0;
-	for(int i=0; i<MAX_DIGITS; i++)
-		digits[i]=0;
-}
-
 BigNum::BigNum(unsigned long  x) { sign=Sign::PLUS; initFromSignedPrimitive(x); }
 BigNum::BigNum(unsigned int   x) { sign=Sign::PLUS; initFromSignedPrimitive(x); }
 BigNum::BigNum(unsigned short x) { sign=Sign::PLUS; initFromSignedPrimitive(x); }
@@ -135,17 +127,6 @@ template <class X> void BigNum::initFromUnSignedPrimitive (X x)
 }
 
 
-// printf -- obsolete --
-void BigNum::print()
-{
-	if (this->sign==Sign::MINUS)
-		printf("-");
-	for(int tmp=lastDigit; tmp>=0; tmp--) {
-		printf("%i", digits[tmp]);
-	}
-	printf("\n");
-}
-
 // implémentation du << pour affichage
 std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 {
@@ -163,6 +144,26 @@ std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 }
 
 // fonctions
+
+void BigNum::initialize()
+{
+	sign=Sign::NUL;
+	lastDigit=0;
+	for(int i=0; i<MAX_DIGITS; i++)
+		digits[i]=0;
+}
+
+
+// printf -- obsolete --
+void BigNum::print()
+{
+	if (this->sign==Sign::MINUS)
+		printf("-");
+	for(int tmp=lastDigit; tmp>=0; tmp--) {
+		printf("%i", digits[tmp]);
+	}
+	printf("\n");
+}
 
 
 int main(int argc, char **argv)
