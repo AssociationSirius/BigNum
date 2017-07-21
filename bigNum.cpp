@@ -68,6 +68,7 @@ public:
 	void print();
 private:
 	void initialize();
+	void normalize();
 	template <class X> void initFromSignedPrimitive (X x);
 	template <class X> void initFromUnSignedPrimitive (X x);
 	char digits[MAX_DIGITS]={0};
@@ -113,6 +114,7 @@ BigNum::BigNum(std::string    s)
 			digits[lastDigit-i]=0; //TODO déclanchement d'erreur
 		}
 	}
+	normalize();
 }
 
 
@@ -240,6 +242,15 @@ void BigNum::initialize()
 		digits[i]=0;
 }
 
+
+void BigNum::normalize()
+{
+	while ((this->lastDigit > 0) && (this->digits[ this->lastDigit ] == 0))
+		this->lastDigit --;
+
+	if ((this->lastDigit == 0) && (this->digits[0] == 0))
+	this->sign = Sign::NUL;
+}
 
 // printf -- obsolete --
 void BigNum::print()
