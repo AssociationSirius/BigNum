@@ -1,7 +1,7 @@
 /*
- * bigNum.cpp
+ * Pedagogical bigNum 
  * 
- * Copyright 2017 olivier <olivier@orion>
+ * Copyright 2017 olivier <olivier@asso-sirius.org>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
