@@ -69,8 +69,8 @@ public:
 private:
 	void initialize();
 	void normalize();
-	template <class X> void initFromSignedPrimitive (X x);
-	template <class X> void initFromUnSignedPrimitive (X x);
+	template <class X> void initFromSigned (X x);
+	template <class X> void initFromUnSigned (X x);
 	char digits[MAX_DIGITS]={0};
 	Sign sign=Sign::NUL;
 	unsigned int lastDigit=0;
@@ -84,12 +84,12 @@ BigNum::BigNum()
 {
 }
 
-BigNum::BigNum(unsigned long  x) { sign=Sign::PLUS; initFromSignedPrimitive(x); }
-BigNum::BigNum(unsigned int   x) { sign=Sign::PLUS; initFromSignedPrimitive(x); }
-BigNum::BigNum(unsigned short x) { sign=Sign::PLUS; initFromSignedPrimitive(x); }
-BigNum::BigNum(         long  x) { initFromUnSignedPrimitive(x); }
-BigNum::BigNum(         int   x) { initFromUnSignedPrimitive(x); }
-BigNum::BigNum(         short x) { initFromUnSignedPrimitive(x); }
+BigNum::BigNum(unsigned long  x) { sign=Sign::PLUS; initFromSigned(x); }
+BigNum::BigNum(unsigned int   x) { sign=Sign::PLUS; initFromSigned(x); }
+BigNum::BigNum(unsigned short x) { sign=Sign::PLUS; initFromSigned(x); }
+BigNum::BigNum(long  x) { initFromUnSigned(x); }
+BigNum::BigNum(int   x) { initFromUnSigned(x); }
+BigNum::BigNum(short x) { initFromUnSigned(x); }
 
 BigNum::BigNum(std::string    s)
 {
@@ -154,8 +154,8 @@ inline void BigNum::operator=(const BigNum &n) {
 
 ////////////////////////////////////////////////////////////////////////////////
 // templates
-template <class X> void BigNum::initFromSignedPrimitive (X x)
 ////////////////////////////////////////////////////////////////////////////////
+template <class X> void BigNum::initFromSigned(X x)
 {
 	//only digits
 	int tmpDigits =-1;
@@ -168,17 +168,17 @@ template <class X> void BigNum::initFromSignedPrimitive (X x)
 	lastDigit=abs(tmpDigits);
 }
 
-template <class X> void BigNum::initFromUnSignedPrimitive (X x)
+template <class X> void BigNum::initFromUnSigned(X x)
 {
 	//signe
 	if (x>0) {
 		sign=Sign::PLUS;
-		initFromSignedPrimitive(x);
+		initFromSigned(x);
 	}
 	else
 	if (x<0) {
 		sign=Sign::MINUS;
-		initFromSignedPrimitive(-x);
+		initFromSigned(-x);
 	}
 }
 
