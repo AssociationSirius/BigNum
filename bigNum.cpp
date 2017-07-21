@@ -69,6 +69,26 @@ BigNum::BigNum(         long  x) { initFromUnSignedPrimitive(x); }
 BigNum::BigNum(         int   x) { initFromUnSignedPrimitive(x); }
 BigNum::BigNum(         short x) { initFromUnSignedPrimitive(x); }
 
+BigNum::BigNum(std::string    x)
+{
+	if (x[0]=='-')
+		sign = -1;
+	else
+		sign = 1;
+	char c;
+	lastDigit= x.length()-1;
+	for (int i=x.length()-1; i>=0; i--) {
+		c = x[i]-'0';
+		if ((c>=0) && (c<=9))
+			digits[lastDigit-i] = c;
+		else {
+			printf("error charactere\n");
+			digits[lastDigit-i]=0; //TODO déclanchement d'erreur
+		}
+	}
+}
+
+
 template <class X> void BigNum::initFromSignedPrimitive (X x)
 {
 	//only digits
