@@ -44,10 +44,10 @@ public:
 	BigNum(unsigned long  x);
 	BigNum(unsigned int   x);
 	BigNum(unsigned short x);
-	BigNum(         long  x);
-	BigNum(         int   x);
-	BigNum(         short x);
-	BigNum(std::string    s);
+	BigNum(long  x);
+	BigNum(int   x);
+	BigNum(short x);
+	BigNum(std::string s);
 
 	// Copy constructor
 	BigNum(const BigNum &n);
@@ -77,8 +77,9 @@ private:
 	CompRes compareTo(const BigNum &n) const;
 };
 
+////////////////////////////////////////////////////////////////////////////////
 // Constructor
-
+////////////////////////////////////////////////////////////////////////////////
 BigNum::BigNum()
 {
 	sign=Sign::NUL;
@@ -117,8 +118,9 @@ BigNum::BigNum(std::string    s)
 	normalize();
 }
 
-
+////////////////////////////////////////////////////////////////////////////////
 // Copy constructor
+////////////////////////////////////////////////////////////////////////////////
 BigNum::BigNum(const BigNum &n) {
 		//cas n=n;
 		if (this == &n)
@@ -130,7 +132,6 @@ BigNum::BigNum(const BigNum &n) {
 		this->digits[i]=n.digits[i];
 }
 
-// Copy constructor
 BigNum::BigNum(const BigNum* n) {
 		//cas n=n;
 		if (this == n)
@@ -153,9 +154,10 @@ inline void BigNum::operator=(const BigNum &n) {
 }
 
 
+////////////////////////////////////////////////////////////////////////////////
 // templates
-
 template <class X> void BigNum::initFromSignedPrimitive (X x)
+////////////////////////////////////////////////////////////////////////////////
 {
 	//only digits
 	int tmpDigits =-1;
@@ -182,8 +184,10 @@ template <class X> void BigNum::initFromUnSignedPrimitive (X x)
 	}
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// operator
+////////////////////////////////////////////////////////////////////////////////
 
-// operator <<
 std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 {
 	std::stringstream oss;
@@ -198,8 +202,9 @@ std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 	return sortie;
 }
 
+////////////////////////////////////////////////////////////////////////////////
 // fonctions
-
+////////////////////////////////////////////////////////////////////////////////
 CompRes BigNum::compareTo(const BigNum &n) const
 {
 	// Study of signs
@@ -263,6 +268,9 @@ void BigNum::print()
 	printf("\n");
 }
 
+
+
+////////////////////////////////////////////////////////////////////////////////
 
 int main(int argc, char **argv)
 {
