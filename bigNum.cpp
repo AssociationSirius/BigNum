@@ -56,6 +56,14 @@ public:
 	// Assignment operator
 	void operator=(const BigNum &x);
 
+	// Ordinary comparison operators
+	bool operator ==(const BigNum &x) const;
+	bool operator !=(const BigNum &x) const;
+	bool operator < (const BigNum &x) const { return compareTo(x) == CompRes::LESS; }
+	bool operator <=(const BigNum &x) const { return compareTo(x) != CompRes::GREATER; }
+	bool operator >=(const BigNum &x) const { return compareTo(x) != CompRes::LESS; }
+	bool operator > (const BigNum &x) const { return compareTo(x) == CompRes::GREATER; }
+
 	friend std::ostream & operator << (std::ostream& sortie , const BigNum & n);
 	void print();
 private:
@@ -65,6 +73,7 @@ private:
 	char digits[MAX_DIGITS]={0};
 	Sign sign;
 	unsigned int lastDigit;
+	CompRes compareTo(const BigNum &n) const;
 };
 
 // gestion des constructeurs
@@ -191,6 +200,40 @@ std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 }
 
 // fonctions
+
+CompRes BigNum::compareTo(const BigNum &n) const
+{
+	// Study of signs
+	if (this->sign < n.sign)
+		return CompRes::LESS;
+	if (this->sign > n.sign)
+		return CompRes::GREATER;
+	// case 0=0
+	if ((this->sign == Sign::NUL) && (n.sign == Sign::NUL))
+		return CompRes::EQUAL;
+
+	//study of digits (BigNums have the same sing)
+	if (this->lastDigit < n.lastDigit)
+		return CompRes::LESS;
+	else if (this->lastDigit > n.lastDigit)
+		return CompRes::GREATER;
+	else {
+		// Compare digits one by one
+		int i = this->lastDigit+1;
+		while (i > 0) {
+			i--;
+			if (this->digits[i] == n.digits[i])
+				continue;
+			else if (this->digits[i] > n.digits[i])
+				return CompRes::GREATER;
+			else
+				return CompRes::LESS;
+		}
+		// If no blocks differed, the numbers are equal.
+		return CompRes::EQUAL;
+	}
+}
+
 
 void BigNum::initialize()
 {
