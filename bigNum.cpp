@@ -111,9 +111,10 @@ void BigNum::print()
 // implémentation du << pour affichage
 std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 {
-	if (n.sign==-1)
-		printf("-");
 	std::stringstream oss;
+	// affichage signe et des digits
+	if (n.sign==-1)
+		oss << "-";
 	char a;
 	for(int tmp=n.lastDigit; tmp>=0; tmp--) {
 		a= n.digits[tmp]+'0';
