@@ -48,7 +48,7 @@ public:
 private:
 	template <class X> void initFromSignedPrimitive (X x);
 	template <class X> void initFromUnSignedPrimitive (X x);
-	char digits[MAX_DIGITS];
+	char digits[MAX_DIGITS]={0};
 	char sign;
 	unsigned int lastDigit;
 };
@@ -59,7 +59,6 @@ BigNum::BigNum()
 {
 	sign=0;
 	lastDigit=0;
-	digits[0]=0;
 }
 
 BigNum::BigNum(unsigned long  x) { sign=1; initFromSignedPrimitive(x); }
