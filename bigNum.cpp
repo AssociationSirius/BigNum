@@ -91,6 +91,31 @@ BigNum::BigNum(         long  x) { initFromUnSignedPrimitive(x); }
 BigNum::BigNum(         int   x) { initFromUnSignedPrimitive(x); }
 BigNum::BigNum(         short x) { initFromUnSignedPrimitive(x); }
 
+BigNum::BigNum(std::string    s)
+{
+	std::string x = s;
+	//cas du moins
+	if (x[0]=='-') {
+		sign = Sign::MINUS;
+		x=x.substr(1, x.length()-1);
+	}
+	else
+		sign = Sign::PLUS;
+
+	char c;
+	lastDigit= x.length()-1;
+	for (int i=x.length()-1; i>=0; i--) {
+		c = x[i]-'0';
+		if ((c>=0) && (c<=9))
+			digits[lastDigit-i] = c;
+		else {
+			printf("error charactere\n");
+			digits[lastDigit-i]=0; //TODO déclanchement d'erreur
+		}
+	}
+}
+
+
 // Copy constructor
 BigNum::BigNum(const BigNum &n) {
 		//cas n=n;
@@ -124,33 +149,6 @@ inline void BigNum::operator=(const BigNum &n) {
 	for(unsigned int i=0; i<=n.lastDigit; i++)
 		this->digits[i]=n.digits[i];
 }
-
-
-BigNum::BigNum(std::string    s)
-{
-	std::string x = s;
-	//cas du moins
-	if (x[0]=='-') {
-		sign = Sign::MINUS;
-		x=x.substr(1, x.length()-1);
-	}
-	else
-		sign = Sign::PLUS;
-
-	char c;
-	lastDigit= x.length()-1;
-	for (int i=x.length()-1; i>=0; i--) {
-		c = x[i]-'0';
-		if ((c>=0) && (c<=9))
-			digits[lastDigit-i] = c;
-		else {
-			printf("error charactere\n");
-			digits[lastDigit-i]=0; //TODO déclanchement d'erreur
-		}
-	}
-}
-
-
 
 
 // templates
