@@ -41,7 +41,7 @@ public:
 	BigNum(         long  x);
 	BigNum(         int   x);
 	BigNum(         short x);
-	BigNum(std::string    x);
+	BigNum(std::string    s);
 
 	friend std::ostream & operator << (std::ostream& sortie , const BigNum & n);
 	void print();
@@ -69,12 +69,17 @@ BigNum::BigNum(         long  x) { initFromUnSignedPrimitive(x); }
 BigNum::BigNum(         int   x) { initFromUnSignedPrimitive(x); }
 BigNum::BigNum(         short x) { initFromUnSignedPrimitive(x); }
 
-BigNum::BigNum(std::string    x)
+BigNum::BigNum(std::string    s)
 {
-	if (x[0]=='-')
+	std::string x = s;
+	//cas du moins
+	if (x[0]=='-') {
 		sign = -1;
+		x=x.substr(1, x.length()-1);
+	}
 	else
 		sign = 1;
+
 	char c;
 	lastDigit= x.length()-1;
 	for (int i=x.length()-1; i>=0; i--) {
@@ -147,42 +152,44 @@ std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 
 int main(int argc, char **argv)
 {
-	printf("taille de l'objet: %lu\n", sizeof(BigNum));
+	//~ printf("taille de l'objet: %lu\n", sizeof(BigNum));
 
-	// constructeur vide
-	BigNum test1;
-	test1.print();
+	//~ // constructeur vide
+	//~ BigNum test1;
+	//~ test1.print();
 
-	// constructeur 1 digit
-	BigNum test2(6);
-	test2.print();
+	//~ // constructeur 1 digit
+	//~ BigNum test2(6);
+	//~ test2.print();
 
-	// constructeur more digit
-	BigNum test3(175846);
-	test3.print();
+	//~ // constructeur more digit
+	//~ BigNum test3(175846);
+	//~ test3.print();
 
-	// test nombre négatif
-	int i=-57;
-	BigNum test4(i);
-	test4.print();
+	//~ // test nombre négatif
+	//~ int i=-57;
+	//~ BigNum test4(i);
+	//~ test4.print();
 
-	int j= -564879564;
-	BigNum test5(j);
-	test5.print();
-	std::cout << test5 << std::endl;
+	//~ int j= -564879564;
+	//~ BigNum test5(j);
+	//~ test5.print();
+	//~ std::cout << test5 << std::endl;
 
-	long k = 978564879564;
-	BigNum test6(k);
-	test6.print();
+	//~ long k = 978564879564;
+	//~ BigNum test6(k);
+	//~ test6.print();
 
-	int kk = -34;
-	BigNum test7(kk);
-	test7.print();
+	//~ int kk = -34;
+	//~ BigNum test7(kk);
+	//~ test7.print();
 
 
-	std::cout << "test7 " << test7 << std::endl;
+	//~ std::cout << "test7 " << test7 << std::endl;
 
-	//~ BigNum test4("564879564651323");
+	BigNum test9("-123456789");
+	test9.print();
+	//~ std::cout << std::endl << "test string :  " << test9 << std::endl;
 	return 0;
 }
 
