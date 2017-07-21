@@ -29,7 +29,12 @@
 
 #define MAX_DIGITS 1000
 
+// gestion du signe
 enum class Sign : char { NUL = 0, PLUS = 1, MINUS = -1 };
+
+// résultat des comparaisons
+enum class CompRes : char { LESS = -1, EQUAL = 0, GREATER = 1 };
+
 
 class BigNum
 {
