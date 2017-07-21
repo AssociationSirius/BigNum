@@ -29,10 +29,10 @@
 
 #define MAX_DIGITS 1000
 
-// gestion du signe
+//Enums Sign
 enum class Sign : char { NUL = 0, PLUS = 1, MINUS = -1 };
 
-// résultat des comparaisons
+// Enums Results of comparisons
 enum class CompRes : char { LESS = -1, EQUAL = 0, GREATER = 1 };
 
 
@@ -76,7 +76,7 @@ private:
 	CompRes compareTo(const BigNum &n) const;
 };
 
-// gestion des constructeurs
+// Constructor
 
 BigNum::BigNum()
 {
@@ -183,11 +183,10 @@ template <class X> void BigNum::initFromUnSignedPrimitive (X x)
 }
 
 
-// implémentation du << pour affichage
+// operator <<
 std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 {
 	std::stringstream oss;
-	// affichage signe et des digits
 	if (n.sign==Sign::MINUS)
 		oss << "-";
 	char a;
@@ -258,21 +257,21 @@ void BigNum::print()
 
 int main(int argc, char **argv)
 {
-	//~ printf("taille de l'objet: %lu\n", sizeof(BigNum));
+	//~ printf("Size of BigNum : %lu\n", sizeof(BigNum));
 
-	//~ // constructeur vide
+	//~ // empty constructor
 	//~ BigNum test1;
 	//~ test1.print();
 
-	//~ // constructeur 1 digit
+	//~ // constructor with 1 digit
 	//~ BigNum test2(6);
 	//~ test2.print();
 
-	//~ // constructeur more digit
+	//~ // constructorwith  more digits
 	//~ BigNum test3(175846);
 	//~ test3.print();
 
-	//~ // test nombre négatif
+	//~ // Test negative number
 	//~ int i=-57;
 	//~ BigNum test4(i);
 	//~ test4.print();
