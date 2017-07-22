@@ -29,13 +29,6 @@
 
 #define MAX_DIGITS 1000
 
-//Enums Sign
-enum class Sign : char { NUL = 0, PLUS = 1, MINUS = -1 };
-
-// Enums Results of comparisons
-enum class CompRes : char { LESS = -1, EQUAL = 0, GREATER = 1 };
-
-
 class BigNum
 {
 public:
@@ -71,6 +64,12 @@ public:
 	BigNum operator -();
 
 private:
+	//Enums Sign
+	enum class Sign : char { NUL = 0, PLUS = 1, MINUS = -1 };
+
+	// Enums Results of comparisons
+	enum class CompRes : char { LESS = -1, EQUAL = 0, GREATER = 1 };
+
 	void initialize();
 	void normalize();
 	template <class X> void initFromSigned (X x);
@@ -189,7 +188,7 @@ inline void BigNum::operator=(const BigNum &n) {
 std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 {
 	std::stringstream oss;
-	if (n.sign==Sign::MINUS)
+	if (n.sign==BigNum::Sign::MINUS)
 		oss << "-";
 	char a;
 	for(int tmp=n.lastDigit; tmp>=0; tmp--) {
@@ -210,7 +209,7 @@ BigNum BigNum::operator -()
 ////////////////////////////////////////////////////////////////////////////////
 // fonctions
 ////////////////////////////////////////////////////////////////////////////////
-CompRes BigNum::compareTo(const BigNum &n) const
+BigNum::CompRes BigNum::compareTo(const BigNum &n) const
 {
 	// Study of signs
 	if (this->sign < n.sign)
