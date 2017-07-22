@@ -232,8 +232,13 @@ void BigNum::normalize()
 // printf -- obsolete --
 void BigNum::print()
 {
+	printf("Digits:  %i\n", this->lastDigit);
 	if (this->sign==Sign::MINUS)
 		printf("-");
+	if (this->sign==Sign::PLUS)
+		printf("+");
+	if (this->sign==Sign::NUL)
+		printf("o");
 	for(int tmp=lastDigit; tmp>=0; tmp--) {
 		printf("%i", digits[tmp]);
 	}
