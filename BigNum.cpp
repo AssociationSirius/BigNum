@@ -157,6 +157,23 @@ BigNum BigNum::operator -()
 	return n;
 }
 
+bool BigNum::operator !=(const BigNum &n) const{
+	return !operator ==(n);
+}
+
+bool BigNum::operator ==(const BigNum &n) const{
+	if (this->sign != n.sign)
+		return false;
+	if (this->lastDigit != n.lastDigit)
+		return false;
+	for(unsigned int i=0; i<=n.lastDigit; i++) {
+		if (this->digits[i] != n.digits[i])
+			return false;
+		}
+	return true;
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////
 // fonctions
 ////////////////////////////////////////////////////////////////////////////////
