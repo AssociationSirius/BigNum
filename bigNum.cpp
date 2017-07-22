@@ -67,6 +67,9 @@ public:
 	friend std::ostream & operator << (std::ostream& sortie , const BigNum & n);
 	void print();
 
+	void opposite();
+	BigNum operator -();
+
 private:
 	void initialize();
 	void normalize();
@@ -197,6 +200,13 @@ std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 	return sortie;
 }
 
+BigNum BigNum::operator -()
+{
+	BigNum n(this);
+	n.opposite();
+	return n;
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // fonctions
 ////////////////////////////////////////////////////////////////////////////////
@@ -263,7 +273,12 @@ void BigNum::print()
 	printf("\n");
 }
 
-
+void BigNum::opposite()
+{
+	if (this->sign==Sign::NUL) return;
+	if (this->sign==Sign::PLUS) {this->sign=Sign::MINUS; return;}
+	if (this->sign==Sign::MINUS) {this->sign=Sign::PLUS; return;}
+};
 
 ////////////////////////////////////////////////////////////////////////////////
 
