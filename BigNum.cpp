@@ -30,6 +30,9 @@
 
 #include "BigNum.hpp"
 
+template <class T> const T& max (const T& a, const T& b) {
+  return (a<b)?b:a;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // Constructor
@@ -251,3 +254,33 @@ void BigNum::opp()
 	if (this->sign==Sign::PLUS) {this->sign=Sign::MINUS; return;}
 	if (this->sign==Sign::MINUS) {this->sign=Sign::PLUS; return;}
 };
+
+
+void BigNum::add_plus(const BigNum &a, const BigNum &b)
+{
+	if (a<0) return;
+	if (b<0) return;
+
+	unsigned int max_digits= max(a.lastDigit, b.lastDigit);
+	//~ printf("max digits %i\n", max_digits);
+	char tmp, carry=0;
+
+	this->sign = Sign::PLUS;
+	for (unsigned int i=0; i<=max_digits; i++) {
+		tmp = a.digits[i]+b.digits[i]+carry;
+		if (tmp>9) {
+			this->digits[i]= tmp-10;
+			carry = 1;
+		} else {
+			this->digits[i]= tmp;
+			carry = 0;
+		}
+	}
+	//~ printf("max digits %i\n", this->digits[max_digits]);
+	if (carry !=0) {
+		this->digits[max_digits+1]=carry;
+		this->lastDigit = max_digits+1;
+	}
+	else
+		this->lastDigit = max_digits;
+}
