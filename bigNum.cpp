@@ -333,7 +333,7 @@ int main(int argc, char **argv)
 	}
 
 	// compare tests
-	if (1) {
+	if (0) {
 		BigNum test1(542);
 		BigNum test2(92);
 		BigNum test3(-540);
@@ -348,12 +348,18 @@ int main(int argc, char **argv)
 		else
 			cout << test2 << " > " << test3 << endl;
 	}
-
-	//normalize tests
-	BigNum test= BigNum("-000123456789");
-	test.print();
-
-
-	return 0;
+	
+	if (1) {
+		//normalize tests
+		BigNum test= BigNum("-000123456789");
+		test.print();
+	
+		BigNum testOpp = test;
+		testOpp.opposite();
+		testOpp.print();
+		
+		BigNum testOpp1 = -test;
+		testOpp1.print();
+		return 0;
+	}
 }
-
