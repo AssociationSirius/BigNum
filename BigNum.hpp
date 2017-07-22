@@ -54,12 +54,12 @@ public:
 	void operator=(const BigNum &x);
 
 	// Ordinary comparison operators
-	bool operator ==(const BigNum &x) const;
-	bool operator !=(const BigNum &x) const;
-	bool operator < (const BigNum &x) const { return compareTo(x) == CompRes::LESS; }
-	bool operator <=(const BigNum &x) const { return compareTo(x) != CompRes::GREATER; }
-	bool operator >=(const BigNum &x) const { return compareTo(x) != CompRes::LESS; }
-	bool operator > (const BigNum &x) const { return compareTo(x) == CompRes::GREATER; }
+	bool operator ==(const BigNum &n) const;
+	bool operator !=(const BigNum &n) const;
+	bool operator < (const BigNum &n) const { return compareTo(n) == CompRes::LESS; }
+	bool operator <=(const BigNum &n) const { return compareTo(n) != CompRes::GREATER; }
+	bool operator >=(const BigNum &n) const { return compareTo(n) != CompRes::LESS; }
+	bool operator > (const BigNum &n) const { return compareTo(n) == CompRes::GREATER; }
 
 	friend std::ostream & operator << (std::ostream& sortie , const BigNum & n);
 	void print();
