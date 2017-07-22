@@ -153,7 +153,7 @@ std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 BigNum BigNum::operator -()
 {
 	BigNum n(this);
-	n.opposite();
+	n.opp();
 	return n;
 }
 
@@ -223,7 +223,7 @@ void BigNum::print()
 	printf("\n");
 }
 
-void BigNum::opposite()
+void BigNum::opp()
 {
 	if (this->sign==Sign::NUL) return;
 	if (this->sign==Sign::PLUS) {this->sign=Sign::MINUS; return;}

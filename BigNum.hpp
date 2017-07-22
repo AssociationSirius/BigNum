@@ -64,7 +64,7 @@ public:
 	friend std::ostream & operator << (std::ostream& sortie , const BigNum & n);
 	void print();
 
-	void opposite();
+	void opp();
 	BigNum operator -();
 
 private:
