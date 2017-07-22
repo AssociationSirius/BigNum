@@ -97,17 +97,51 @@ int main(int argc, char **argv)
 			cout << test2 << " > " << test3 << endl;
 	}
 	
-	if (1) {
+	if (0) {
 		//normalize tests
 		BigNum test= BigNum("-000123456789");
 		test.print();
 	
 		BigNum testOpp = test;
-		testOpp.opposite();
+		testOpp.opp();
 		testOpp.print();
 		
 		BigNum testOpp1 = -test;
 		testOpp1.print();
 	}
-		return 0;
+	
+	if (0) {
+		//normalize tests
+		BigNum a= BigNum("596516649");
+		BigNum b= BigNum("1189641421");
+		BigNum c= BigNum("9921");
+
+		BigNum d,e;
+		d.add_plus(a,b);
+		d.print();
+		e.add_plus(b,c);
+		e.print();
+	}
+
+	if (1) {
+		long a,b;
+		BigNum aa,bb;
+		for(long int i=0; i< 50000000; i++) {
+			a= rand();
+			b= rand();
+			BigNum aa(a);
+			BigNum bb(b);
+			BigNum cc(a+b);
+			BigNum dd;
+			dd.add_plus(aa,bb);
+			if (cc != dd) {
+				printf("a = %li b=%li\nSomme:         : %li\n", a,b, a+b);
+				printf("valeur trouvée : "); dd.print();
+				printf("intermédiaire  : "); cc.print();
+				printf("error : %li %li\n\n",a,b);
+			}
+		}
+	}
+
+	return 0;
 }
