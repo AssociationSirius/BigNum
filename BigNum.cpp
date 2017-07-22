@@ -1,5 +1,5 @@
 /*
- * Pedagogical bigNum 
+ * Pedagogical BigNum 
  * 
  * Copyright 2017 olivier <olivier@asso-sirius.org>
  * 
@@ -20,6 +20,7 @@
  * 
  * 
  */
+
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -27,58 +28,8 @@
 #include <vector>
 #include <string>
 
-#define MAX_DIGITS 1000
+#include "BigNum.hpp"
 
-class BigNum
-{
-public:
-	BigNum();
-	// Constructors from primitive integer types
-	BigNum(unsigned long  x);
-	BigNum(unsigned int   x);
-	BigNum(unsigned short x);
-	BigNum(long  x);
-	BigNum(int   x);
-	BigNum(short x);
-	BigNum(std::string s);
-
-	// Copy constructor
-	BigNum(const BigNum &n);
-	BigNum(const BigNum* n);
-
-	// Assignment operator
-	void operator=(const BigNum &x);
-
-	// Ordinary comparison operators
-	bool operator ==(const BigNum &x) const;
-	bool operator !=(const BigNum &x) const;
-	bool operator < (const BigNum &x) const { return compareTo(x) == CompRes::LESS; }
-	bool operator <=(const BigNum &x) const { return compareTo(x) != CompRes::GREATER; }
-	bool operator >=(const BigNum &x) const { return compareTo(x) != CompRes::LESS; }
-	bool operator > (const BigNum &x) const { return compareTo(x) == CompRes::GREATER; }
-
-	friend std::ostream & operator << (std::ostream& sortie , const BigNum & n);
-	void print();
-
-	void opposite();
-	BigNum operator -();
-
-private:
-	//Enums Sign
-	enum class Sign : char { NUL = 0, PLUS = 1, MINUS = -1 };
-
-	// Enums Results of comparisons
-	enum class CompRes : char { LESS = -1, EQUAL = 0, GREATER = 1 };
-
-	void initialize();
-	void normalize();
-	template <class X> void initFromSigned (X x);
-	template <class X> void initFromUnSigned (X x);
-	char digits[MAX_DIGITS]={0};
-	Sign sign=Sign::NUL;
-	unsigned int lastDigit=0;
-	CompRes compareTo(const BigNum &n) const;
-};
 
 ////////////////////////////////////////////////////////////////////////////////
 // Constructor
@@ -278,88 +229,3 @@ void BigNum::opposite()
 	if (this->sign==Sign::PLUS) {this->sign=Sign::MINUS; return;}
 	if (this->sign==Sign::MINUS) {this->sign=Sign::PLUS; return;}
 };
-
-////////////////////////////////////////////////////////////////////////////////
-
-using namespace std;
-
-int main(int argc, char **argv)
-{
-	if (0) {
-		printf("Size of BigNum : %lu\n", sizeof(BigNum));
-	}
-
-	if(0) {
-		// empty constructor
-		BigNum test1;
-		test1.print();
-	
-		// constructor with 1 digit
-		BigNum test2(6);
-		test2.print();
-	
-		// constructorwith  more digits
-		BigNum test3(175846);
-		test3.print();
-	
-		// Test negative number
-		int i=-57;
-		BigNum test4(i);
-		test4.print();
-	
-		int j= -564879564;
-		BigNum test5(j);
-		test5.print();
-		std::cout << test5 << std::endl;
-	
-		long k = 978564879564;
-		BigNum test6(k);
-		test6.print();
-	
-		int kk = -34;
-		BigNum test7(kk);
-		test7.print();
-	
-		BigNum* test9= new BigNum("-123456789");
-		test9->print();
-	
-		BigNum test10(test9);
-		BigNum test11;
-		test11 = test9;
-	
-		delete test9;
-		test10.print();
-		test11.print();
-	}
-
-	// compare tests
-	if (0) {
-		BigNum test1(542);
-		BigNum test2(92);
-		BigNum test3(-540);
-
-		if (test1 < test2)
-			cout << test1 << " < " << test2 << endl;
-		else
-			cout << test1 << " > " << test2 << endl;
-	
-		if (test2 < test3)
-		cout << test2 << " < " << test3 << endl;
-		else
-			cout << test2 << " > " << test3 << endl;
-	}
-	
-	if (1) {
-		//normalize tests
-		BigNum test= BigNum("-000123456789");
-		test.print();
-	
-		BigNum testOpp = test;
-		testOpp.opposite();
-		testOpp.print();
-		
-		BigNum testOpp1 = -test;
-		testOpp1.print();
-		return 0;
-	}
-}
