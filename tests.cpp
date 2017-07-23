@@ -117,9 +117,9 @@ int main(int argc, char **argv)
 		BigNum c= BigNum("9921");
 
 		BigNum d,e;
-		d.add_plus(a,b);
+		d.add_pos(a,b);
 		d.print();
-		e.add_plus(b,c);
+		e.add_pos(b,c);
 		e.print();
 	}
 
@@ -133,7 +133,7 @@ int main(int argc, char **argv)
 			BigNum bb(b);
 			BigNum cc(a+b);
 			BigNum dd;
-			dd.add_plus(aa,bb);
+			dd.add_pos(aa,bb);
 			if (cc != dd) {
 				printf("a = %li b=%li\nSomme:         : %li\n", a,b, a+b);
 				printf("valeur trouvée : "); dd.print();

@@ -65,7 +65,7 @@ public:
 	void print();
 
 	void opp();
-	void add_plus(const BigNum &a, const BigNum &b);
+	void add_pos(const BigNum &a, const BigNum &b);
 	BigNum operator -();
 
 private:

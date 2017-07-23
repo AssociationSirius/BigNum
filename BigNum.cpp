@@ -256,7 +256,7 @@ void BigNum::opp()
 };
 
 
-void BigNum::add_plus(const BigNum &a, const BigNum &b)
+void BigNum::add_pos(const BigNum &a, const BigNum &b)
 {
 	if (a<0) return;
 	if (b<0) return;
