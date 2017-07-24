@@ -226,6 +226,7 @@ BigNum::CompRes BigNum::absCompareTo(const BigNum &n) const
 }
 
 
+
 void BigNum::initialize()
 {
 	sign=Sign::NUL;
@@ -298,6 +299,10 @@ void BigNum::add(const BigNum &a, const BigNum &b)
 	}
 }
 
+void BigNum::sou(const BigNum &a, const BigNum &b)
+{
+	add(a, -b );
+}
 
 void BigNum::add_pos(const BigNum &a, const BigNum &b)
 {
