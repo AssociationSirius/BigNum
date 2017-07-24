@@ -191,6 +191,11 @@ BigNum::CompRes BigNum::compareTo(const BigNum &n) const
 	if ((this->sign == Sign::NUL) && (n.sign == Sign::NUL))
 		return CompRes::EQUAL;
 
+	return absCompareTo(n);
+}
+
+BigNum::CompRes BigNum::absCompareTo(const BigNum &n) const
+{
 	//study of digits (BigNums have the same sing)
 	if (this->lastDigit < n.lastDigit)
 		return CompRes::LESS;
