@@ -65,8 +65,8 @@ public:
 	void print();
 
 	void opp();
-	void add_pos(const BigNum &a, const BigNum &b);
 	void sou_pos(const BigNum &a, const BigNum &b);
+	void add(const BigNum &a, const BigNum &b);
 	BigNum operator -() const;
 
 private:
@@ -79,6 +79,7 @@ private:
 	void initialize();
 	void normalize();
 	void copy(const BigNum &n);
+	void add_pos(const BigNum &a, const BigNum &b);
 	BigNum::CompRes absCompareTo(const BigNum &n) const;
 	template <class X> void initFromSigned (X x);
 	template <class X> void initFromUnSigned (X x);

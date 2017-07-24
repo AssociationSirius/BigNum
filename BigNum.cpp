@@ -267,17 +267,45 @@ void BigNum::opp()
 	if (this->sign==Sign::MINUS) {this->sign=Sign::PLUS; return;}
 };
 
+void BigNum::add(const BigNum &a, const BigNum &b)
+{
+	if ((a.sign==Sign::PLUS) && (b.sign==Sign::PLUS)) {
+		this->sign=Sign::PLUS;
+		this->add_pos(a,b);
+		return;
+	}
+	if ((a.sign==Sign::MINUS) && (b.sign==Sign::MINUS)) {
+		this->sign=Sign::MINUS;
+		this->add_pos(a,b);
+		return;
+	}
+	if (a.sign==Sign::NUL) {
+		this->copy(b);
+		return;
+	}
+	if (b.sign==Sign::NUL) {
+		this->copy(a);
+		return;
+	}
+
+	//Sign are different
+	if (a.absCompareTo(b) == CompRes::GREATER) {
+		this->sign = a.sign;
+		this->sou_pos(a,b);
+	} else {
+		this->sign = b.sign;
+		this->sou_pos(b,a);
+	}
+}
+
 
 void BigNum::add_pos(const BigNum &a, const BigNum &b)
 {
-	if (a<0) return;
-	if (b<0) return;
-
 	unsigned int max_digits= max(a.lastDigit, b.lastDigit);
 	//~ printf("max digits %i\n", max_digits);
 	char tmp, carry=0;
 
-	this->sign = Sign::PLUS;
+	//~ this->sign = Sign::PLUS;
 	for (unsigned int i=0; i<=max_digits; i++) {
 		tmp = a.digits[i]+b.digits[i]+carry;
 		if (tmp>9) {
@@ -303,7 +331,7 @@ void BigNum::sou_pos(const BigNum &a, const BigNum &b)
 	char v;				/* placeholder digit */
 	unsigned int i;		/* counter */
 
-	this->sign = Sign::PLUS;
+	//~ this->sign = Sign::PLUS;
     this->lastDigit = a.lastDigit;
 
     for (i=0; i<=a.lastDigit; i++) {
