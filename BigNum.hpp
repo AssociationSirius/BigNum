@@ -78,6 +78,7 @@ private:
 
 	void initialize();
 	void normalize();
+	void copy(const BigNum &n);
 	BigNum::CompRes absCompareTo(const BigNum &n) const;
 	template <class X> void initFromSigned (X x);
 	template <class X> void initFromUnSigned (X x);
