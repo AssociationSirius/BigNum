@@ -352,3 +352,48 @@ void BigNum::sou_pos(const BigNum &a, const BigNum &b)
     }
 	this->normalize();
 }
+
+
+void BigNum::mulByChar(const BigNum &n, const char a)
+{
+	if (a==0) {
+		this->lastDigit = 0;
+		this->digits[0]=0;
+		this->sign=Sign::NUL;
+		return;
+	}
+
+	this->sign= Sign::PLUS;
+	if (a<0) {
+		if (this->sign==Sign::PLUS)
+			this->sign= Sign::MINUS;
+		if (this->sign==Sign::MINUS)
+			this->sign= Sign::PLUS;
+
+		if (this->sign==Sign::NUL)
+			return;
+	}
+
+	char v;
+	unsigned int i;
+	char carry=0;
+
+	this->lastDigit = n.lastDigit;
+	for (i=0; i<=n.lastDigit; i++) {
+		v = n.digits[i] * a + carry;
+		if (v > 9) {
+			carry = v/10;
+			this->digits[i] = v%10;
+		}
+		else {
+			carry = 0;
+			this->digits[i] = v;
+		}
+    }
+    if (carry !=0) { //TODO cas capacity
+		this->lastDigit++;
+		this->digits[this->lastDigit] = carry;
+	}
+}
+
+

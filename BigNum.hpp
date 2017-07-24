@@ -69,6 +69,7 @@ public:
 	void sou(const BigNum &a, const BigNum &b);
 	BigNum operator -() const;
 
+	void mulByChar(const BigNum &n, const char a);
 private:
 	//Enums Sign
 	enum class Sign : char { NUL = 0, PLUS = 1, MINUS = -1 };
