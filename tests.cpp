@@ -123,7 +123,7 @@ int main(int argc, char **argv)
 		e.print();
 	}
 
-	if (1) {
+	if (0) {
 		long a,b;
 		BigNum aa,bb;
 		for(long int i=0; i< 5000; i++) {
@@ -146,7 +146,7 @@ int main(int argc, char **argv)
 	}
 
 
-	if (1) {
+	if (0) {
 		long a,b;
 		BigNum aa,bb;
 		for(long int i=0; i< 5000; i++) {
@@ -172,5 +172,29 @@ int main(int argc, char **argv)
 		}
 	}
 
+
+	if (1) {
+		long a;
+		char b;
+		BigNum aa,bb;
+		for(long int i=0; i< 5000; i++) {
+			a= rand();
+			//~ a=0;
+			b= rand()%9;
+			//~ b=0;
+
+			BigNum aa(a);
+			BigNum cc(a*b);
+			BigNum dd;
+			dd.mulByChar(aa,b);
+			if (cc != dd) {
+				printf("a = %li b=%i\nProduit:         : %li\n", a,b, a*b);
+				printf("valeur trouvée : "); dd.print();
+				printf("intermédiaire  : "); cc.print();
+				printf("error : %li %i\n\n",a,b);
+			}
+		}
+	}
+	
 	return 0;
 }
