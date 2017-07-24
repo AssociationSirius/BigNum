@@ -117,23 +117,25 @@ int main(int argc, char **argv)
 		BigNum c= BigNum("9921");
 
 		BigNum d,e;
-		d.add_pos(a,b);
+		d.add(a,b);
 		d.print();
-		e.add_pos(b,c);
+		e.add(b,c);
 		e.print();
 	}
 
-	if (0) {
+	if (1) {
 		long a,b;
 		BigNum aa,bb;
-		for(long int i=0; i< 50000; i++) {
-			a= rand();
-			b= rand();
+		for(long int i=0; i< 5000; i++) {
+			a= rand()-RAND_MAX/2;
+			//~ a= 0;
+			b= rand()-RAND_MAX/2;
+			//~ b= 0;
 			BigNum aa(a);
 			BigNum bb(b);
 			BigNum cc(a+b);
 			BigNum dd;
-			dd.add_pos(aa,bb);
+			dd.add(aa,bb);
 			if (cc != dd) {
 				printf("a = %li b=%li\nSomme:         : %li\n", a,b, a+b);
 				printf("valeur trouvée : "); dd.print();
@@ -148,8 +150,10 @@ int main(int argc, char **argv)
 		long a,b;
 		BigNum aa,bb;
 		for(long int i=0; i< 5000; i++) {
-			a= rand();
-			b= rand();
+			a= rand()-RAND_MAX/2;
+			//~ a=0;
+			b= rand()-RAND_MAX/2;
+			//~ b=0;
 
 			while(a<b) 
 				a+=rand();
@@ -158,7 +162,7 @@ int main(int argc, char **argv)
 			BigNum bb(b);
 			BigNum cc(a-b);
 			BigNum dd;
-			dd.sou_pos(aa,bb);
+			dd.sou(aa,bb);
 			if (cc != dd) {
 				printf("a = %li b=%li\nDifférence:         : %li\n", a,b, a+b);
 				printf("valeur trouvée : "); dd.print();
