@@ -164,7 +164,7 @@ int main(int argc, char **argv)
 			BigNum dd;
 			dd.sou(aa,bb);
 			if (cc != dd) {
-				printf("a = %li b=%li\nDifférence:         : %li\n", a,b, a+b);
+				printf("a = %li b=%li\nDifférence:         : %li\n", a,b, a-b);
 				printf("valeur trouvée : "); dd.print();
 				printf("intermédiaire  : "); cc.print();
 				printf("error : %li %li\n\n",a,b);
