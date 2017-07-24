@@ -332,11 +332,10 @@ void BigNum::add_pos(const BigNum &a, const BigNum &b)
 
 void BigNum::sou_pos(const BigNum &a, const BigNum &b)
 {
-	char borrow=0;		/* has anything been borrowed? */
-	char v;				/* placeholder digit */
-	unsigned int i;		/* counter */
+	char borrow=0;
+	char v;
+	unsigned int i;
 
-	//~ this->sign = Sign::PLUS;
     this->lastDigit = a.lastDigit;
 
     for (i=0; i<=a.lastDigit; i++) {
