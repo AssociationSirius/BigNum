@@ -67,7 +67,7 @@ public:
 	void opp();
 	void add_pos(const BigNum &a, const BigNum &b);
 	void sou_pos(const BigNum &a, const BigNum &b);
-	BigNum operator -();
+	BigNum operator -() const;
 
 private:
 	//Enums Sign

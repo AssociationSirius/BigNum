@@ -160,7 +160,7 @@ std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 	return sortie;
 }
 
-BigNum BigNum::operator -()
+BigNum BigNum::operator -() const
 {
 	BigNum n(this);
 	n.opp();
