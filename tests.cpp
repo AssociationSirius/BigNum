@@ -173,7 +173,7 @@ int main(int argc, char **argv)
 	}
 
 
-	if (1) {
+	if (0) {
 		long a;
 		long b;
 		//~ BigNum aa,bb;
@@ -194,6 +194,19 @@ int main(int argc, char **argv)
 				printf("error : %li %li\n\n",a,b);
 			}
 		}
+	}
+
+	if (0) {
+		BigNum a(123456);
+		a.print();
+		a.digitShift(4);
+		a.print();
+		a.digitShift(6);
+		a.print();
+		a.digitShift(3);
+		a.print();
+		a.digitShift(0);
+		a.print();
 	}
 	
 	return 0;
