@@ -131,7 +131,7 @@ template <class X> void BigNum::initFromUnSigned(X x)
 ////////////////////////////////////////////////////////////////////////////////
 // operator
 ////////////////////////////////////////////////////////////////////////////////
-inline void BigNum::operator=(const BigNum &n) {
+void BigNum::operator=(const BigNum &n) {
 	this->initialize();
 	this->sign=n.sign;
 	this->lastDigit= n.lastDigit;
