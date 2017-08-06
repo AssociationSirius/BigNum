@@ -62,9 +62,13 @@ public:
 	bool operator >=(const BigNum &n) const { return compareTo(n) != CompRes::LESS; }
 	bool operator > (const BigNum &n) const { return compareTo(n) == CompRes::GREATER; }
 
+	// Normal operator
+
+	//ostream
 	friend std::ostream & operator << (std::ostream& sortie , const BigNum & n);
 	void print();
 
+	// functions
 	void opp();
 	void add(const BigNum &a, const BigNum &b);
 	void sou(const BigNum &a, const BigNum &b);
