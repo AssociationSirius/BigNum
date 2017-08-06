@@ -70,6 +70,8 @@ public:
 	BigNum operator -() const;
 
 	void mulByChar(const BigNum &n, const char a);
+
+	void digitShift(int d);
 private:
 	//Enums Sign
 	enum class Sign : char { NUL = 0, PLUS = 1, MINUS = -1 };

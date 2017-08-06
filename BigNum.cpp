@@ -353,6 +353,22 @@ void BigNum::sou_pos(const BigNum &a, const BigNum &b)
 }
 
 
+
+void BigNum::digitShift(int d)
+{
+	int i;
+
+	if ((this->lastDigit ==0)&&(this->digits[0]==0))
+		return;
+
+	for(i=this->lastDigit; i>=0;i--)
+		this->digits[i+d] = this->digits[i];
+	for(i=0; i<d; i++)
+		this->digits[i] = 0;
+
+	this->lastDigit +=d;
+}
+
 void BigNum::mulByChar(const BigNum &n, const char a)
 {
 	if (a==0) {
