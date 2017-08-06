@@ -209,7 +209,7 @@ int main(int argc, char **argv)
 		a.print();
 	}
 
-	if (1) {
+	if (0) {
 		long a;
 		long b;
 		BigNum aa,bb,cc,dd;
@@ -231,5 +231,45 @@ int main(int argc, char **argv)
 			}
 		}
 	}
+
+	if (0) {
+		BigNum a(45);
+		BigNum b(432);
+		BigNum c;
+		//~ a.add(a,b);
+		//~ a.print();
+		//~ a.sou(a,b);
+		//~ a.print();
+		c = a*b;
+		c.print();
+		a= a*b;
+		a.print();
+	}
+
+	if (0) {
+		BigNum a; // a is 0
+		int b = 535;
+		a = b;
+		a.print();
+	
+		BigNum d(234);
+		int c = 766;
+		d = d+c;
+		d.print();
+	}
+	
+	if (1) {
+		BigNum a(54);
+		int b = 35;
+		a += b;
+		a.print();
+
+		a -= b;
+		a.print();
+
+		a *= b;
+		a.print();
+	}
+
 	return 0;
 }
