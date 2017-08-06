@@ -208,6 +208,28 @@ int main(int argc, char **argv)
 		a.digitShift(0);
 		a.print();
 	}
+
+	if (1) {
+		long a;
+		long b;
+		BigNum aa,bb,cc,dd;
+		for(long int i=0; i< 5; i++) {
+			a= rand()-RAND_MAX/2;
+			//~ a=0;
+			b= -rand()-RAND_MAX/2;
+			//~ b=0;
+			aa=BigNum(a);
+			bb=BigNum(b);
+			cc=BigNum(a*b);
 	
+			dd.mul(aa,bb);
+			if (dd !=cc) {
+				printf("%li\n",a);
+				printf("%li\n",b);
+				printf("valeur trouvée "); dd.print();
+				printf("valeur attendue %li\n",a*b);
+			}
+		}
+	}
 	return 0;
 }
