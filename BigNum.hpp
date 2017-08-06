@@ -68,8 +68,8 @@ public:
 	void add(const BigNum &a, const BigNum &b);
 	void sou(const BigNum &a, const BigNum &b);
 	BigNum operator -() const;
+	void mul(const BigNum &n, const BigNum &b);
 
-	void mul(const BigNum &n, BigNum &b);
 	void mulByChar(const BigNum &n, const char a);
 
 	void digitShift(int d);

@@ -354,7 +354,7 @@ void BigNum::sou_pos(const BigNum &a, const BigNum &b)
 }
 
 
-void BigNum::mul(const BigNum &n, BigNum &b)
+void BigNum::mul(const BigNum &n, const BigNum &b)
 {
 	this->initialize();
 	if (n.sign==Sign::NUL || b.sign==Sign::NUL)
