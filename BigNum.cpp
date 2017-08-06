@@ -202,6 +202,21 @@ BigNum BigNum::operator *(const BigNum &x) const {
 	return ans;
 }
 
+void BigNum::operator +=(const BigNum &x) {
+	add(*this, x);
+}
+
+void BigNum::operator -=(const BigNum &x) {
+	sou(*this, x);
+}
+
+void BigNum::operator *=(const BigNum &x) {
+	BigNum ans;
+	ans.mul(*this, x);
+	this->copy(ans);
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////
 // fonctions
 ////////////////////////////////////////////////////////////////////////////////
