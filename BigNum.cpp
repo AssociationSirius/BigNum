@@ -299,6 +299,7 @@ void BigNum::add(const BigNum &a, const BigNum &b)
 	}
 }
 
+
 void BigNum::sou(const BigNum &a, const BigNum &b)
 {
 	add(a, -b );
@@ -353,6 +354,24 @@ void BigNum::sou_pos(const BigNum &a, const BigNum &b)
 }
 
 
+void BigNum::mul(const BigNum &n, BigNum &b)
+{
+	this->initialize();
+	if (n.sign==Sign::NUL || b.sign==Sign::NUL)
+		return;
+	if((n.sign==Sign::PLUS && b.sign==Sign::PLUS) ||
+		(n.sign==Sign::MINUS && b.sign==Sign::MINUS))
+		this->sign = Sign::PLUS;
+	else
+		this->sign = Sign::MINUS;
+
+	BigNum tmp;// = n;
+	for(unsigned int i=0; i<=b.lastDigit; i++) {
+		tmp.mulByChar(n,b.digits[i]);
+		tmp.digitShift(i); 
+		this->add_pos(this,tmp);
+	}
+}
 
 void BigNum::digitShift(int d)
 {
