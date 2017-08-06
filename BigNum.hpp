@@ -52,6 +52,7 @@ public:
 
 	// Assignment operator
 	void operator=(const BigNum &x);
+	BigNum operator -() const;
 
 	// Ordinary comparison operators
 	bool operator ==(const BigNum &n) const;
@@ -67,7 +68,6 @@ public:
 	void opp();
 	void add(const BigNum &a, const BigNum &b);
 	void sou(const BigNum &a, const BigNum &b);
-	BigNum operator -() const;
 	void mul(const BigNum &n, const BigNum &b);
 
 	void mulByChar(const BigNum &n, const char a);
