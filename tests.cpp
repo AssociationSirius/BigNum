@@ -175,8 +175,8 @@ int main(int argc, char **argv)
 
 	if (1) {
 		long a;
-		char b;
-		BigNum aa,bb;
+		long b;
+		//~ BigNum aa,bb;
 		for(long int i=0; i< 5000; i++) {
 			a= rand();
 			//~ a=0;
@@ -188,10 +188,10 @@ int main(int argc, char **argv)
 			BigNum dd;
 			dd.mulByChar(aa,b);
 			if (cc != dd) {
-				printf("a = %li b=%i\nProduit:         : %li\n", a,b, a*b);
+				printf("a = %li b=%li\nProduit:         : %li\n", a,b, a*b);
 				printf("valeur trouvée : "); dd.print();
 				printf("intermédiaire  : "); cc.print();
-				printf("error : %li %i\n\n",a,b);
+				printf("error : %li %li\n\n",a,b);
 			}
 		}
 	}
