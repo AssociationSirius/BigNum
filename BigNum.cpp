@@ -184,6 +184,24 @@ bool BigNum::operator ==(const BigNum &n) const{
 }
 
 
+BigNum BigNum::operator +(const BigNum &x) const {
+	BigNum ans;
+	ans.add(*this, x);
+	return ans;
+}
+
+BigNum BigNum::operator -(const BigNum &x) const {
+	BigNum ans;
+	ans.sou(*this, x);
+	return ans;
+}
+
+BigNum BigNum::operator *(const BigNum &x) const {
+	BigNum ans;
+	ans.mul(*this, x);
+	return ans;
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // fonctions
 ////////////////////////////////////////////////////////////////////////////////

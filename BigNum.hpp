@@ -63,6 +63,9 @@ public:
 	bool operator > (const BigNum &n) const { return compareTo(n) == CompRes::GREATER; }
 
 	// Normal operator
+	BigNum operator +(const BigNum &x) const;
+	BigNum operator -(const BigNum &x) const;
+	BigNum operator *(const BigNum &x) const;
 
 	//ostream
 	friend std::ostream & operator << (std::ostream& sortie , const BigNum & n);
