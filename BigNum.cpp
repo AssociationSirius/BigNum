@@ -356,9 +356,10 @@ void BigNum::sou_pos(const BigNum &a, const BigNum &b)
 void BigNum::mulByChar(const BigNum &n, const char a)
 {
 	if (a==0) {
-		this->lastDigit = 0;
-		this->digits[0]=0;
-		this->sign=Sign::NUL;
+		this->initialize();
+		//~ this->lastDigit = 0;
+		//~ this->digits[0]=0;
+		//~ this->sign=Sign::NUL;
 		return;
 	}
 
