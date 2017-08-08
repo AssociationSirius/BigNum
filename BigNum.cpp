@@ -465,3 +465,29 @@ void BigNum::mulByChar(const BigNum &n, const char a)
 }
 
 
+void BigNum::div(const BigNum &a, const BigNum &b, BigNum &r)
+{
+	BigNum tmp;
+	BigNum result;
+	BigNum tmpA = a;
+	r.initialize();
+	tmp.initialize();
+	result.initialize();
+	//~ printf("diff : %i\n",a.lastDigit-b.lastDigit);
+	//~ printf(" "); tmpA.print();
+	result.lastDigit = a.lastDigit-b.lastDigit;
+	result.sign=Sign::PLUS;
+	for(int i=a.lastDigit-b.lastDigit; i>=0; i--) {
+		tmp = b;
+		tmp.digitShift(i);
+		//~ printf("       "); std::cout << tmp << std::endl;
+		while(tmpA> tmp){
+			result.digits[i]=result.digits[i]+1;
+			tmpA = tmpA-tmp;
+		}
+		//~ printf(" "); tmpA.print();
+	}
+	r= tmpA;
+	result.normalize();
+	this->copy(result);
+}
