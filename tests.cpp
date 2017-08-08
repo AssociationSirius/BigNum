@@ -258,9 +258,9 @@ int main(int argc, char **argv)
 		d.print();
 	}
 	
-	if (1) {
+	if (0) {
 		BigNum a(54);
-		int b = 35;
+		BigNum b(35);
 		a += b;
 		a.print();
 
@@ -269,6 +269,29 @@ int main(int argc, char **argv)
 
 		a *= b;
 		a.print();
+	}
+	
+	if (0){
+			BigNum a(1557);
+			BigNum b(34);
+			BigNum r;
+			BigNum q;
+			q.div(a,b,r);
+			a.print();
+			b.print();
+			q.print();
+			r.print();
+	}
+	if (1) {
+			BigNum a(87557);
+			BigNum b(543);
+			BigNum r;
+			BigNum q;
+			q.div(a,b,r);
+			a.print();
+			b.print();
+			q.print();
+			r.print();
 	}
 
 	return 0;
