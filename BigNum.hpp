@@ -80,7 +80,7 @@ public:
 	void add(const BigNum &a, const BigNum &b);
 	void sou(const BigNum &a, const BigNum &b);
 	void mul(const BigNum &n, const BigNum &b);
-	void div(const BigNum &a, const BigNum &b, BigNum &r);
+	void div(const BigNum &_a, const BigNum &_b, BigNum &r);
 
 	void mulByChar(const BigNum &n, const char a);
 	void digitShift(int d);

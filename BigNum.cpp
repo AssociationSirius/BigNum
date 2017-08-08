@@ -470,14 +470,25 @@ void BigNum::mulByChar(const BigNum &n, const char a)
 }
 
 
-void BigNum::div(const BigNum &a, const BigNum &b, BigNum &r)
+void BigNum::div(const BigNum &_a, const BigNum &_b, BigNum &r)
 {
+	BigNum a,b;
+	a.absolute(_a);
+	b.absolute(_b);
+
+	if (a<b){
+		r=a;
+		this->initialize();
+		return;
+	}
+
 	BigNum tmp;
 	BigNum result;
 	BigNum tmpA = a;
 	r.initialize();
 	tmp.initialize();
 	result.initialize();
+
 	//~ printf("diff : %i\n",a.lastDigit-b.lastDigit);
 	//~ printf(" "); tmpA.print();
 	result.lastDigit = a.lastDigit-b.lastDigit;
