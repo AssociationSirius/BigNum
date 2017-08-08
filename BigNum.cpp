@@ -275,7 +275,7 @@ void BigNum::normalize()
 		this->lastDigit --;
 
 	if ((this->lastDigit == 0) && (this->digits[0] == 0))
-	this->sign = Sign::NUL;
+		this->sign = Sign::NUL;
 }
 
 // printf -- obsolete --
