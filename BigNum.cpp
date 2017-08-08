@@ -145,6 +145,11 @@ void BigNum::copy(const BigNum &n) {
 	for(unsigned int i=0; i<=n.lastDigit; i++)
 		this->digits[i]=n.digits[i];
 }
+void BigNum::absolute(const BigNum &n) {
+	this->copy(n);
+	if (this->digits[0]>0)
+		this->sign=Sign::PLUS;
+}
 
 std::ostream & operator << (std::ostream& sortie , const BigNum & n)
 {

@@ -94,6 +94,7 @@ private:
 	void initialize();
 	void normalize();
 	void copy(const BigNum &n);
+	void absolute(const BigNum &n);
 	void add_pos(const BigNum &a, const BigNum &b);
 	void sou_pos(const BigNum &a, const BigNum &b);
 	BigNum::CompRes absCompareTo(const BigNum &n) const;
