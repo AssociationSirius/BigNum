@@ -506,4 +506,19 @@ void BigNum::div(const BigNum &_a, const BigNum &_b, BigNum &r)
 	r= tmpA;
 	result.normalize();
 	this->copy(result);
+
+	if (_a.sign == _b.sign)
+		return;
+
+	if (_a.sign == Sign::MINUS && _b.sign==Sign::PLUS) {
+		this->sign= Sign::MINUS;
+		*this=*this-1;
+		r=b-r;
+		return;
+	}
+
+	if (_a.sign == Sign::PLUS && _b.sign==Sign::MINUS) {
+		this->sign= Sign::MINUS;
+		return;
+	}
 }
