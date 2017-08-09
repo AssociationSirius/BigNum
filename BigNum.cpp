@@ -207,6 +207,20 @@ BigNum BigNum::operator *(const BigNum &x) const {
 	return ans;
 }
 
+BigNum BigNum::operator /(const BigNum &x) const {
+	if (x.sign==Sign::NUL) throw "BigNum::operator /: division by zero";
+	BigNum q, r;
+	q.div(*this, x, r);
+	return q;
+}
+
+BigNum BigNum::operator %(const BigNum &x) const {
+	if (x.sign==Sign::NUL) throw "BigNum::operator %: division by zero";
+	BigNum q, r;
+	q.div(*this,x, r);
+	return r;
+}
+
 void BigNum::operator +=(const BigNum &x) {
 	add(*this, x);
 }

@@ -66,6 +66,8 @@ public:
 	BigNum operator +(const BigNum &x) const;
 	BigNum operator -(const BigNum &x) const;
 	BigNum operator *(const BigNum &x) const;
+	BigNum operator /(const BigNum &x) const;
+	BigNum operator %(const BigNum &x) const;
 
 	void operator +=(const BigNum &x);
 	void operator -=(const BigNum &x);
