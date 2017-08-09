@@ -236,6 +236,22 @@ void BigNum::operator *=(const BigNum &x) {
 }
 
 
+void BigNum::operator ++(){
+	*this=*this+1;
+}
+
+void BigNum::operator ++(int) {
+	operator ++();
+}
+
+void BigNum::operator --(){
+	*this=*this-1;
+}
+
+void BigNum::operator --(int) {
+	operator --();
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // fonctions
 ////////////////////////////////////////////////////////////////////////////////

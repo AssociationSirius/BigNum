@@ -73,6 +73,12 @@ public:
 	void operator -=(const BigNum &x);
 	void operator *=(const BigNum &x);
 
+	void operator ++();
+	void operator --();
+	void operator ++(int);
+	void operator --(int);
+
+
 	//ostream
 	friend std::ostream & operator << (std::ostream& sortie , const BigNum & n);
 	void print();
