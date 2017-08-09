@@ -270,7 +270,6 @@ int main(int argc, char **argv)
 		a *= b;
 		a.print();
 	}
-	
 	if (0){
 			BigNum a(1557);
 			BigNum b(34);
@@ -316,6 +315,12 @@ int main(int argc, char **argv)
 			r.print();
 	}
 
+	if (0) {
+		BigNum a(345);
+		for(int j=0; j<100;j++)
+			a++;
+		a.print();
+	}
 
 	if (1) {
 			BigNum a(-1557);
