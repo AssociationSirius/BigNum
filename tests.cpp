@@ -282,12 +282,48 @@ int main(int argc, char **argv)
 			q.print();
 			r.print();
 	}
-	if (1) {
+	if (0){
+			BigNum a(-1557);
+			BigNum b(34);
+			BigNum r;
+			BigNum q;
+			q.div(a,b,r);
+			a.print();
+			b.print();
+			q.print();
+			r.print();
+	}
+	if (0){
+			BigNum a(1557);
+			BigNum b(-34);
+			BigNum r;
+			BigNum q;
+			q.div(a,b,r);
+			a.print();
+			b.print();
+			q.print();
+			r.print();
+	}
+	if (0) {
 			BigNum a(87557);
 			BigNum b(543);
 			BigNum r;
 			BigNum q;
 			q.div(a,b,r);
+			a.print();
+			b.print();
+			q.print();
+			r.print();
+	}
+
+
+	if (1) {
+			BigNum a(-1557);
+			BigNum b(34);
+			BigNum r;
+			BigNum q;
+			r=a%b;
+			q=a/b;
 			a.print();
 			b.print();
 			q.print();
